@@ -1,74 +1,44 @@
 import React, { useState } from 'react';
 import './App.css';
 import Hotels from './Hotels';
-import {getList} from './fileHandler'
+import {getList, addList} from './fileHandler'
+
+var dummy_hotels = getList();
+
+export function update() {
+  dummy_hotels = getList();
+}
 
 function App() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showHotels, setShowHotels] = useState(false);
-  const [hotels, setHotels] = useState([]);
+  //const [hotels, setHotels] = useState(DUMMY_HOTELS);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const DUMMY_HOTELS = getList();
+  const [counter, setCounter] = useState(0)
 
   const handleLoginClick = () => {
     setIsLoggedIn(true);
   };
-
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
-  const handleHotelClick = () => {
-    setShowHotels(true);
+  const handleAddClick = () => {
+    addList('','','','','');
+    update();
+    setCounter(counter+1);
   };
 
-  // const handleAddHotel = (event) => {
-  //   event.preventDefault();
-  //   const hotelName = event.target.elements.hotelName.value;
-  //   const location = event.target.elements.location.value;
-  //   setHotels([...hotels, { hotelName, location }]);
-  //   event.target.reset();
-  // };
-
-  // const handleDeleteHotel = (index) => {
-  //   const updatedHotels = [...hotels];
-  //   updatedHotels.splice(index, 1);
-  //   setHotels(updatedHotels);
-  // };
-
-  // const handleEditHotel = (index, updatedHotel) => {
-  //   const updatedHotels = [...hotels];
-  //   updatedHotels[index] = updatedHotel;
-  //   setHotels(updatedHotels);
-  // };
-
-  // const hotelForm = (
-  //   <div>
-  //     <h2>Hotels</h2>
-  //     <form onSubmit={handleAddHotel}>
-  //       <label htmlFor="hotelName">Hotel Name:</label>
-  //       <input type="text" id="hotelName" name="hotelName" /><br />
-  //       <label htmlFor="location">Location:</label>
-  //       <input type="text" id="location" name="location" /><br />
-  //       <button type="submit">Add Hotel</button>
-  //     </form>
-  //     {hotels.map((hotel, index) => (
-  //       <div id={index}>
-  //         <h3>{hotel.hotelName}</h3>
-  //         <p>{hotel.location}</p>
-  //         <button onClick={() => handleDeleteHotel(index)}>Delete</button>
-  //         <button onClick={() => handleEditHotel(index, { ...hotel, location: 'New Location' })}>Edit</button>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
-
+  // const handleHotels = () => {
+  //   setHotels(DUMMY_HOTELS)
+  // }
+  // function update() {
+  //   handleHotels();
+  // }
   return (
     <div>
       <header>
@@ -93,12 +63,15 @@ function App() {
           <form action="#" method="get">
             <input type="text" name="destination" placeholder="Enter your destination" />
             <button type="submit">Search</button>
-              </form>
+          </form>
+          {isLoggedIn ? (
+            <button onClick={handleAddClick}>New Hotel</button>
+          ) : (<></>)}
         </div>
       </header>
       <main>
       <div>
-              <Hotels hotels_list={DUMMY_HOTELS} loginStatus={isLoggedIn}/>
+              <Hotels hotels_list={dummy_hotels} loginStatus={isLoggedIn}/>
             </div>
       </main>
       <footer>

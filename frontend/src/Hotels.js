@@ -7,7 +7,15 @@ function Hotels(props){
     return(
         <div className = "hotels">
             {props.hotels_list.map((hotel)=>(
-                <HotelItems key={hotel.id} name={hotel.name} image={hotel.image} ratings={hotel.ratings} price={hotel.price} address={hotel.address} loginStatus={props.loginStatus} />
+                <HotelItems 
+                key={hotel.id}
+                id={hotel.id} 
+                name={hotel.name} 
+                image={hotel.image} 
+                ratings={hotel.ratings} 
+                price={hotel.price} 
+                address={hotel.address} 
+                loginStatus={props.loginStatus} />
             
                 )
             )}

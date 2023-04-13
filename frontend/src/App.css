@@ -9,6 +9,10 @@ body {
 	background-color: #0077FF;
 	color: #fff;
 	padding: 20px;
+	position:relative;
+	left: 0;
+	top: 0;
+	width: 100%;
   }
   
   nav {
@@ -126,10 +130,14 @@ body {
   }
   
   /* footer styles */
-  footer {
+footer {
 	background-color: #0077FF;
 	color: #fff;
-	padding: 5px;
+	padding: 0px;
 	text-align: center;
-  }
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
   

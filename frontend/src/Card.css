@@ -3,21 +3,23 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     padding: 1rem;
-    margin: 1rem auto;
+    margin: 1rem 1rem;
     max-width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.50);
-    flex-direction: column;
+    flex-direction: column; 
+    }
+
+    .card-img {
+        width:400px;
     }
 
     .card h2{
         color: aliceblue;
-        display: block;
     }
 
     .card h3{
         color: aliceblue;
-        flex-direction: column;
     }
