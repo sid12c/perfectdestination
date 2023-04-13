@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Hotels from './Hotels';
-//import fileHandler from './fileHandler'
+import {getList} from './fileHandler'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,45 +10,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //const DUMMY_HOTELS=fileHandler.getList();
-
-  const DUMMY_HOTELS= [
-    {
-      id:'H1',
-      boolValue: isLoggedIn,
-      name: 'Hotel 1',
-      price: '1000',
-      ratings: '4',
-      address: 'abc efg',
-      image:'https://picsum.photos/325/350?random=1'
-    },
-    {
-      id:'H2',
-      isLoggedIn,
-      name: 'Hotel 2',
-      price: '2000',
-      ratings: '1',
-      address: 'abc efg',
-      image:'https://picsum.photos/325/350?random=2'
-    },
-    {
-      id:'H3',
-      isLoggedIn,
-      name: 'Hotel 3',
-      price: '3000',
-      ratings: '2',
-      address: 'abc efg',
-      image:'https://picsum.photos/325/350?random=3'
-    },
-    {
-      id:'H4',
-      name: 'Hotel 4',
-      price: '4000',
-      ratings: '3',
-      address: 'abc efg',
-      image:'https://picsum.photos/325/350?random=4'
-    }
-  ]
+  const DUMMY_HOTELS = getList();
 
   const handleLoginClick = () => {
     setIsLoggedIn(true);

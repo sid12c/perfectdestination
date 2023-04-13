@@ -1,5 +1,3 @@
-import React from "react";
-
 const DUMMY_HOTELS= [
     {
         id:'H1',
@@ -35,11 +33,39 @@ const DUMMY_HOTELS= [
     }
 ]
 
-function fileHandler(props){
-    function getList() {
-        return DUMMY_HOTELS;
-    }
+export function getList() {
+    return DUMMY_HOTELS;
 }
 
+export function addList(i, n, p, r, a, img) {
+    DUMMY_HOTELS.push({
+        id: i,
+        name: n,
+        price: p,
+        ratings: r,
+        address: a,
+        image: img
+    })
+}
 
-export default fileHandler
+export function editList(i, n, p, r, a, img) {
+    const dataToChange = DUMMY_HOTELS.findIndex(item => {
+        return item.id === i;
+      });
+      
+      DUMMY_HOTELS[dataToChange].name = n;
+      DUMMY_HOTELS[dataToChange].price = p;
+      DUMMY_HOTELS[dataToChange].rating = r;
+      DUMMY_HOTELS[dataToChange].address = a;
+      DUMMY_HOTELS[dataToChange].image = img;
+}
+
+export function deleteList(i) {
+    const dataToChange = DUMMY_HOTELS.findIndex(item => {
+        return item.id === i;
+    });
+
+    if (dataToChange > -1) { 
+        DUMMY_HOTELS.splice(dataToChange, 1);
+    }
+}
