@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Hotels from './Hotels';
+//import fileHandler from './fileHandler'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -8,6 +9,8 @@ function App() {
   const [hotels, setHotels] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  //const DUMMY_HOTELS=fileHandler.getList();
 
   const DUMMY_HOTELS= [
     {
