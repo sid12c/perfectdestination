@@ -1,0 +1,9 @@
+img.card-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+h2.card-name {
+    float: right;
+    margin-left: 20px;
+}
