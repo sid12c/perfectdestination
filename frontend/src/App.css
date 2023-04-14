@@ -19,6 +19,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width:90%;
   }
   
   nav ul {
@@ -63,6 +64,20 @@ body {
 	color: #fff;
   }
   
+  button {
+	background-color: #fff;
+	color: #0077FF;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+	background-color: #0077FF;
+	color: #fff;
+  }
+
   .search-container {
 	display: flex;
 	flex-direction: column;
@@ -103,11 +118,31 @@ body {
 	transition: all 0.3s ease-in-out;
   }
   
+  .newButton {
+	margin-top: 20px;
+	background-color: #fff;
+	color: #0077FF;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	font-size: 18px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+  }
+
+  .newButton:hover {
+	background-color: #0077FF;
+	color: #fff;
+  }
   .search-container button[type="submit"]:hover {
 	background-color: #0077FF;
 	color: #fff;
   }
   
+.class-Home {
+margin-bottom: 300px;
+}
+
   /* main styles */
   main {
 	margin-top: 10px;
@@ -115,7 +150,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-  }
+	color: white;
+}
   
   .image-container {
 	display: flex;
@@ -133,10 +169,12 @@ body {
 footer {
 	background-color: #0077FF;
 	color: #fff;
-	padding: 0px;
+	padding: 5px;
 	text-align: center;
-	position: fixed;
+	/* position: fixed;
 	left: 0;
+	bottom: 0;
+	width: 100%; */
 	bottom: 0;
 	width: 100%;
 }

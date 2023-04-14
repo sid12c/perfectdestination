@@ -5,15 +5,15 @@ body {
   
   .hotels {
     position: relative;
-    top: 225px;
+    /* top: 225px; */
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:flex-start;
+    flex-wrap: wrap;
+    justify-content:space-around;
     max-width: 100vw; 
     flex-grow: 1;
     margin: 2rem auto;
-    width:450px;
-    height:450px;
+    /* width:450px;
+    height:600px; */
   }
   

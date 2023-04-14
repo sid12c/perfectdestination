@@ -54,7 +54,6 @@ export function addList(n, p, r, a, img) {
         address: a,
         image: img
     })
-    printList();
 }
 
 function makeid(length) {

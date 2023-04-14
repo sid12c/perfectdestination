@@ -3,8 +3,6 @@ import {useState} from 'react'
 import Card from './Card'
 import {editList, deleteList} from './fileHandler'
 import {update} from './App'
-// import './HotelItems.css'
-
 
 function HotelItems (props) {
     const [isEditing, setIsEditing] = useState(false);
@@ -68,14 +66,18 @@ function HotelItems (props) {
                 <Card className='card'>
                     <form onSubmit={handleSaveClick}>
                         <label htmlFor='hotelName'>Name:</label>
+                        <br></br>
                         <input
                             type='text'
                             id='hotelName'
                             name='hotelName'
                             defaultValue={hotelName}
                             onChange={handleName}
+                            size={25}
                         />
+                        <br></br>
                         <label htmlFor='hotelImage'>Image:</label>
+                        <br></br>
                         <input
                             type='text'
                             id='hotelImage'
@@ -83,7 +85,9 @@ function HotelItems (props) {
                             defaultValue={hotelImage}
                             onChange={handleImage}
                         />
+                        <br></br>
                         <label htmlFor='hotelRatings'>Ratings:</label>
+                        <br></br>
                         <input
                             type='text'
                             id='hotelRatings'
@@ -91,7 +95,9 @@ function HotelItems (props) {
                             defaultValue={hotelRatings}
                             onChange={handleRatings}
                         />
+                        <br></br>
                         <label htmlFor='hotelPrice'>Price:</label>
+                        <br></br>
                         <input
                             type='text'
                             id='hotelPrice'
@@ -99,7 +105,9 @@ function HotelItems (props) {
                             defaultValue={hotelPrice}
                             onChange={handlePrice}
                         />
+                        <br></br>
                         <label htmlFor='hotelAddress'>Address:</label>
+                        <br></br>
                         <input
                             type='text'
                             id='hotelAddress'
@@ -107,8 +115,13 @@ function HotelItems (props) {
                             defaultValue={hotelAddress}
                             onChange={handleAddress}
                         />
+                        <br></br>
+                        <br></br>
                         <button type='submit'>Save</button>
+                        <br></br>
+                        <br></br>
                         <button onClick={handleCancelClick}>Cancel</button>
+                        <br></br>
                     </form>
                 </Card>
             );
