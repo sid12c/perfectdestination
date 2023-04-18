@@ -1,7 +1,7 @@
 # Perfect Destination
 
 Conlan Henson, Sidharth Chaudhary, & Kishan Kalaria
-<br>
+<hr>
 
 ## Project Tree
 
