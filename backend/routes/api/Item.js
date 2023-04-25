@@ -22,14 +22,14 @@ router.post('/', (req, res) => {
     .catch((err) => res.status(400).json({error: 'Unable to add this item'}));
 });
 // router.put('/:id', (req, res) => {res.send('testing put /:id route')});
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     Item.findByIdAndUpdate(req.params.id, req.body)
     .then((item) => res.json({msg: 'Updated successfully'}))
     .catch((err) =>
         res.status(400).json({error: 'Unable to update the database'}));
 });
 
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     Item.findByIdAndRemove(req.params.id, req.body)
     .then((item) => res.json({mgs: 'Item entry deleted successfully'}))
     .catch((err) => res.status(404).json({error: 'No such item'}));
