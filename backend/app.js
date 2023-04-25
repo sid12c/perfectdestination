@@ -33,9 +33,64 @@ mongoose.connect(conn_str, {
 
 const items = require('./routes/api/Item');
 app.use('/api/Item', items);
-app.get('/user/:id', (req, res) => {
-    res.send(`user ${req.params.id}`)
+app.get('/api/item/:id', (req, res) => {
+    res.send(`item ${req.params.id}`)
 })
 // app.put('/api/Item/:id', (req, res) => {
 //     res.send(`user ${req.params.id}`)
 // })
+app.delete('/api/Item/:id', (req, res) => {
+    res.send(`item ${req.params.id}`)
+})
+
+const users = require('./routes/api/User');
+app.use('/api/User', users);
+
+
+const App = () => {
+    const [userData, setUserData] = useState({
+        token: undefined,
+        user: undefined,
+    });
+    useEffect (() => {
+        const checkLoggedIn = async () => {
+            let token = localStorage.getItem("auth-token");
+            if (token === null) {
+                localStorage.setItem("auth-token", "");
+                token = "";
+            }
+            const tokenResponse = await axios.post(
+                "http://localhost:4000/tokenIsValid",
+                null,
+                {headers: {"x-auth-token": token}}
+            );
+            if (tokenResponse.data) {
+                const userRes = await axios.get("http://localhost:4000/", {
+                    headers: {"x-auth-token": token},
+                });
+                setUserData({
+                    token,
+                    user: userRes.data,
+                });
+            }
+        };
+        checkLoggedIn();
+    }, []);
+
+    return (
+        <UserContext.Provider value ={{userData, setUserData}}>
+            <Router>
+                <Routes>
+                    <Route exact path='/' element={<ShowItemList />} />
+                    <Route path='/create-item' element={<CreateItem />} />
+                    <Route path='/add' element={<CreateItem />} />
+                    <Route path='/edit-item/:id' element={<UpdateItemInfo />} />
+                    <Route path='/show-item/:id' element={<ShowItemDetails />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/signup' element={<Signup />} />
+                    <Route path='*' element={<ErrorPage />} />
+                </Routes>
+            </Router>
+        </UserContext.Provider>
+    );
+}
