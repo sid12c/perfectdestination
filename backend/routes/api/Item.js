@@ -31,7 +31,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     Item.findByIdAndRemove(req.params.id, req.body)
-    .then((item) => res.json({mgs: 'Item entry deleted successfully'}))
+    .then((item) => res.json({msg: 'Item entry deleted successfully'}))
     .catch((err) => res.status(404).json({error: 'No such item'}));
 });
 
