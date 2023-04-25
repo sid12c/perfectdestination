@@ -1,12 +1,54 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const bcryptjs = require("bcryptjs");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
 const User = require('../../models/User');
 
+
+
+/*const auth = async (req, res, next) => {
+  try {
+        const token = req.header("x-auth-token");
+        if (!token)
+            return res
+            .status(401)
+            .json({msg: "No auth token, access denied"});
+        const verified = jwt.verify(token, "passwordKey");
+        if (!verified)
+            return res
+            .status(401)
+            .json({msg: "Token verification failed, authroization denied"});
+        // since the token was made out of document id 
+        req.user = verified.id;
+        next();
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+   
+};
+function auth (req, res, next) {
+   try {
+        const token = req.header("x-auth-token");
+        if (!token)
+            return res
+            .status(401)
+            .json({msg: "No auth token, access denied"});
+        const verified = jwt.verify(token, "passwordKey");
+        if (!verified)
+            return res
+            .status(401)
+            .json({msg: "Token verification failed, authroization denied"});
+        // since the token was made out of document id 
+        req.user = verified.id;
+        next();
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+}*/
 // Signup route
-userRouter.post("/signup", async (req, res) => {
+userRouter.post("/Signup", async (req, res) => {
     try {
         const {email, password, confirmPassword, username} = req.body;
         if (!email || !password || !username || !confirmPassword) {
@@ -74,3 +116,23 @@ userRouter.post("/tokenIsValid", async (req, res) => {
         res.status(500).json({error: err.message});
     }
 });
+
+// to get the users credentials
+
+userRouter.get("/", auth, async(req, res) => {
+    try {
+      const user = await User.findById(req.user);
+      if (!user) {
+        return res.status(404).json({ noitemfound: "No User found" });
+      }
+      res.json({
+        username: user.username,
+        id: user._id,
+      });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+  
+module.exports = userRouter;
