@@ -43,6 +43,7 @@ function App() {
   };
   const handleSignedUpClick = () => {
     setIsSignUp(false);
+    
   }
   const handleCancelClick = () => {
     setIsSignUp(false);
