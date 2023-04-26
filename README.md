@@ -9,7 +9,20 @@ Conlan Henson, Sidharth Chaudhary, & Kishan Kalaria
 Perfect Destination
 │
 ├───backend
-│
+|   |
+│   ├───middleware
+|   |   └─── auth.js
+|   |  
+|   ├───models
+|   |   |   Item.js
+|   |   |   User.js
+|   |
+|   ├───routes/api
+|   |   |   Item.js
+|   |   |   User.js
+|   |   
+|   |   app.js
+|
 └───frontend
     │
     └───src
