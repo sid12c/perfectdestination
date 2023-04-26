@@ -82,15 +82,15 @@ userRouter.post("/Signup", async (req, res) => {
 // Login route
 userRouter.post("/login", async (req, res) => {
     try {
-        const {email, password} = req.body;
-        if (!email || !password) {
+        const {username, password} = req.body;
+        if (!username || !password) {
             return res.status(400).json({msg: "Please enter all the fields"});
         }
-        const user = await User.findOne({email});
+        const user = await User.findOne({username});
         if (!user) {
             return res
             .status(400)
-            .json({msg: "User with this email does not exist"});
+            .json({msg: "User with this username does not exist"});
         }
         const isMatch = await bcryptjs.compare(password, user.password);
         if (!isMatch) {

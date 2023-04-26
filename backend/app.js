@@ -33,7 +33,7 @@ mongoose.connect(conn_str, {
 
 const items = require('./routes/api/Item');
 app.use('/api/Item', items);
-app.get('/api/item/:id', (req, res) => {
+app.get('/api/Item/:id', (req, res) => {
     res.send(`item ${req.params.id}`)
 })
 // app.put('/api/Item/:id', (req, res) => {

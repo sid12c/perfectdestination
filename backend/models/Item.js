@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 const ItemSchema = new mongoose.Schema({
-    // _id: {
-    //     type: String
-    // },
-    title: {
+    name: {
         type: String,
         required: true,
     },
-    description: {
+    price: {
+        type: String,
+    },
+    ratings: {
+        type: String,
+    },
+    address: {
         type: String,
     },
     image: {
         type: String,
-    }, 
-    updated_date: {
-        type: Date,
-        default: Date.now,
     }
 });
 module.exports = Item = mongoose.model('item', ItemSchema);
